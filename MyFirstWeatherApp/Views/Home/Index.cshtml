@@ -1,0 +1,40 @@
+﻿@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/AngularJs/WeatherApp.js"></script>
+    <script src="~/AngularJs/WeatherCtrl.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+
+}
+<html ng-app="WeatherApp">
+<body ng-controller="WeatherCtrl as vm">
+    <div>
+        <div class="jumbotron">
+            <h1>My First Weather App</h1>
+
+        </div>
+
+        <div class="row">
+            <input ng-model="vm.RequestData.longitude" type="text" placeholder="Enter Longitude" />
+            <input ng-model="vm.RequestData.lattitude" type="text" placeholder="Enter Lattitude" />
+            <button type="button" ng-click="vm.submitData()">submit</button>
+        </div>
+        <br />
+        <div class="row" ng-show="vm.SubmitClicked">
+             <table class="table-bordered">
+                 <thead>
+                     <tr>
+                         <th>Time</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr ng-repeat="data in vm.ViewWeatherData.daily.data">
+                         <td>{{data.time | date:"MM/dd/yyyy h:mma"}}</td>
+                     </tr>
+                 </tbody>
+             </table>
+        </div>
+    </div>
+</body>
+
+</html>
+
